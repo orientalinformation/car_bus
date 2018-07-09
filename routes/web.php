@@ -14,3 +14,28 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/introduce', function () {
+    return view('introduce');
+});
+
+Route::get('/contact', function () {
+    return view('contact');
+});
+
+Route::get('/product', function () {
+    return view('product');
+});
+
+Route::get('/users/register', function () {
+    return view('users.register');
+});
+
+Route::get('/users/login', function () {
+    return view('users.login');
+});
+
+Route::get('/car/searchadvanced', function () {
+    return view('car.searchadvanced');
+});
+// Route::get('gioithieu', 'gioithieuController@getIndex');
