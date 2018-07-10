@@ -34,14 +34,16 @@
             <li></li>
           </ul>
         </li>
-        <li class="nav_sub"><a href="/product"><span>Hãng Xe</span></a></li>
+        <li class="nav_sub"><a href="/product"><span>Hãng Xe</span></a>
+          @include('partials/brandmenu', array('menus' => DB::table('hang_xe')->get()))
+        </li>
         <li><a href="/contact"><span>Liên Hệ</span></a></li>
         <li><a href="/cars/searchadvanced"><span>Tìm Kiếm Nâng Cao</span></a></li>
       </ul>
     </div>
     <div class="clr"></div>
     <div class="slider"> <!--Phần hình ảnh và chữ slide-->
-    
+      @include('partials/slideshow', array('slides' => DB::table('slide_show')->join('image','slide_show.image_url','=','image.im_ma')->get()))
       <div class="clr"></div>
     </div>
     <div class="clr"></div>
