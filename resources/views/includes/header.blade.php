@@ -15,7 +15,7 @@
             <a href="/user/logout">Đăng Xuất</a>
           </div>
         @else 
-            Chưa đăng nhập | <a href="/user/login">Đăng nhập</a>
+            Chưa đăng nhập | <a href="/users/login">Đăng nhập</a>
         @endif
       </div>
     </div>

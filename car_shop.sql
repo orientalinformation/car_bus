@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.4
--- http://www.phpmyadmin.net
+-- version 4.6.6deb4
+-- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: Jan 07, 2014 at 11:05 PM
--- Server version: 5.6.12-log
--- PHP Version: 5.4.12
+-- Host: localhost:3306
+-- Generation Time: Jul 10, 2018 at 08:41 AM
+-- Server version: 10.1.26-MariaDB-0+deb9u1
+-- PHP Version: 7.0.30-1~dotdeb+8.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -14,13 +14,11 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
 -- Database: `car_shop`
 --
-CREATE DATABASE IF NOT EXISTS `car_shop` DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;
-USE `car_shop`;
 
 -- --------------------------------------------------------
 
@@ -28,8 +26,8 @@ USE `car_shop`;
 -- Table structure for table `car`
 --
 
-CREATE TABLE IF NOT EXISTS `car` (
-  `car_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `car` (
+  `car_id` int(11) NOT NULL,
   `car_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `car_image` int(11) DEFAULT NULL,
   `car_content` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
@@ -37,11 +35,8 @@ CREATE TABLE IF NOT EXISTS `car` (
   `car_gia` int(100) DEFAULT NULL,
   `car_color` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `car_loai` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `view` int(11) NOT NULL,
-  PRIMARY KEY (`car_id`),
-  KEY `fk_hang_car_idx` (`car_hang`),
-  KEY `fk_image_car_idx` (`car_image`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=34 ;
+  `view` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `car`
@@ -53,7 +48,7 @@ INSERT INTO `car` (`car_id`, `car_name`, `car_image`, `car_content`, `car_hang`,
 (3, 'Toyota altis', 3, 'Altis là một trong các mẫu xe có độ tin cậy tốt nhất, giá bán lại cao và sự ưa chuộng đặc biệt của người tiêu dùng Việt Nam.', 'TYT', 914000000, 'Màu kem', 'Thể thao', 1),
 (4, 'Toyota camry', 4, 'Toyota Camry Với thiết kế thanh lịch, hiện đại và thể thao, nội thất sang trọng cùng khả năng vận hành mạnh mẽ, và tiết kiệm nhiên liệu tối đa.', 'TYT', 1292000000, 'Màu xanh', 'Thể thao', 0),
 (5, 'Toyota yaris', 5, 'Toyota Yaris 2013-2014 Phiên bản mới nhất,Toyota Việt Nam chính thức phân phối Toyota Yaris tại Việt Nam mẫu xe cỡ nhỏ tiện lợi.', 'TYT', 661000000, 'Màu đen', 'Du lịch', 0),
-(6, 'Toyota innova', 6, 'Là dòng xe thống trị phân khúc đa dụng nhiều năm liền, Toyota Innova , là "quả bom tấn" của Toyota.', 'TYT', 814000000, 'Màu xanh dương', 'Thể thao', 0),
+(6, 'Toyota innova', 6, 'Là dòng xe thống trị phân khúc đa dụng nhiều năm liền, Toyota Innova , là \"quả bom tấn\" của Toyota.', 'TYT', 814000000, 'Màu xanh dương', 'Thể thao', 0),
 (7, 'Toyota fortuner', 7, 'Mẫu xe SUV địa hình việt dã luôn chiếm thị phần thống trị (trên 50%) của Toyota được ra mắt lần đầu năm 2007.', 'TYT', 1056000000, 'Màu vàng', ' Du lịch', 0),
 (8, 'Toyota Landcruiser prado', 8, 'Mẫu xe nhập khẩu nguyên chiếc từ Nhật Bản với 07 chiếc.', 'TYT', 2071000000, 'Màu hồng', 'Du lịch', 0),
 (9, 'Hyundai Starex', 9, 'Mẫu xe nhập khẩu nguyên chiếc từ Nhật Bản với 07 chỗ, động cơ 2.7 VVT-i, máy xăng, 2 cầu 4 bánh chủ động toàn thời gian.', 'HYD', 529000000, 'Màu kem', 'Du lịch', 0),
@@ -81,15 +76,13 @@ INSERT INTO `car` (`car_id`, `car_name`, `car_image`, `car_content`, `car_hang`,
 -- Table structure for table `comment`
 --
 
-CREATE TABLE IF NOT EXISTS `comment` (
-  `cm_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `comment` (
+  `cm_id` int(11) NOT NULL,
   `cm_content` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
   `cm_date` varchar(100) DEFAULT NULL,
   `cm_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `cm_car_id` int(11) DEFAULT NULL,
-  PRIMARY KEY (`cm_id`),
-  KEY `cm_car_id` (`cm_car_id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=65 ;
+  `cm_car_id` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `comment`
@@ -126,17 +119,14 @@ INSERT INTO `comment` (`cm_id`, `cm_content`, `cm_date`, `cm_name`, `cm_car_id`)
 -- Table structure for table `dat_hang`
 --
 
-CREATE TABLE IF NOT EXISTS `dat_hang` (
-  `dh_ma` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `dat_hang` (
+  `dh_ma` int(11) NOT NULL,
   `dh_user` int(11) DEFAULT NULL,
   `dh_car_id` int(11) DEFAULT NULL,
   `dh_so_luong` int(11) DEFAULT NULL,
   `dh_ngay_dat` date DEFAULT NULL,
-  `dh_tinh_trang` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`dh_ma`),
-  KEY `fk_user_dh_idx` (`dh_user`),
-  KEY `fk_car_dh_idx` (`dh_car_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+  `dh_tinh_trang` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -144,10 +134,9 @@ CREATE TABLE IF NOT EXISTS `dat_hang` (
 -- Table structure for table `hang_xe`
 --
 
-CREATE TABLE IF NOT EXISTS `hang_xe` (
+CREATE TABLE `hang_xe` (
   `hang_id` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
-  `hang_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`hang_id`)
+  `hang_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -165,13 +154,11 @@ INSERT INTO `hang_xe` (`hang_id`, `hang_name`) VALUES
 -- Table structure for table `image`
 --
 
-CREATE TABLE IF NOT EXISTS `image` (
-  `im_ma` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `image` (
+  `im_ma` int(11) NOT NULL,
   `im_url` varchar(1024) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `im_hang` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`im_ma`),
-  KEY `im_hang` (`im_hang`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=46 ;
+  `im_hang` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `image`
@@ -230,15 +217,13 @@ INSERT INTO `image` (`im_ma`, `im_url`, `im_hang`) VALUES
 -- Table structure for table `slide_show`
 --
 
-CREATE TABLE IF NOT EXISTS `slide_show` (
-  `sl_id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `slide_show` (
+  `sl_id` int(11) NOT NULL,
   `image_url` int(11) DEFAULT NULL,
   `sl_url` varchar(1024) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `sl_title` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
-  `sl_order` int(11) DEFAULT NULL,
-  PRIMARY KEY (`sl_id`),
-  KEY `fk_sl_image_idx` (`image_url`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=4 ;
+  `sl_order` int(11) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `slide_show`
@@ -252,11 +237,11 @@ INSERT INTO `slide_show` (`sl_id`, `image_url`, `sl_url`, `sl_title`, `sl_order`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Table structure for table `users`
 --
 
-CREATE TABLE IF NOT EXISTS `user` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
   `user_name` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `password` varchar(64) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `user_image` int(10) DEFAULT NULL,
@@ -265,21 +250,107 @@ CREATE TABLE IF NOT EXISTS `user` (
   `user_gioithieu` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
   `user_ntns` varchar(100) DEFAULT NULL,
   `user_diachi` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `user_role` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `user_image` (`user_image`)
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=19 ;
+  `user_role` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `user`
+-- Dumping data for table `users`
 --
 
-INSERT INTO `user` (`id`, `user_name`, `password`, `user_image`, `user_email`, `user_sdt`, `user_gioithieu`, `user_ntns`, `user_diachi`, `user_role`) VALUES
-(1, 'admin', '$2y$08$8A9YFOSWNbU2dOx2PweEGea8cpvA9e6gJ15LieVOsJwhTNXs8s8Hu', 30, 'hoangminhhiep1992@gmail.com', '6895372334', '<p>dfghj546.56</p>', '12/11/1992', '5467/456/456', 'ADM'),
-(15, 'hiep', '$2y$08$F0iz8cNr/mW4HnaOrGZGNOYCJEZJdBLxWoOzcDawg0OdkyzXEYMzq', 43, 'congacon@gmail.com', '1234567890', '<p>Toi la hiep hhsdf</p>', '09/08/1992', '135B', 'MOD2'),
-(16, 'hai', '$2y$08$da0mjyklhuZkeP31YBMhguxJd7cvsar/wgwjSZsKpln2BJXoHOTHa', 45, 'con@.com', '01213455789', '<p>wertg</p>', '23456', '123456', 'MEM'),
-(18, 'dong', '$2y$08$MQbBZ0F0V0POvrs.zF0d8udNkMRGa2xFejRtnmn6gbeufWQqcI4JS', 44, 'conga@gmail.com', '01213455789', '<p>T&ocirc;i l&agrave; đ&ocirc;ng</p>', '09/08/1992', '135B', 'MEM');
+INSERT INTO `users` (`id`, `user_name`, `password`, `user_image`, `user_email`, `user_sdt`, `user_gioithieu`, `user_ntns`, `user_diachi`, `user_role`) VALUES
+(1, 'admin', '$2y$12$lTn9xsUReWKcC475Q2fzd.VrKWKlkR..lDxRFN1AncgTPiXIEQaye\0', 30, 'hoangminhhiep1992@gmail.com', '6895372334', '<p>dfghj546.56</p>', '12/11/1992', '5467/456/456', 'ADM'),
+(15, 'hiep', '$2y$12$lTn9xsUReWKcC475Q2fzd.VrKWKlkR..lDxRFN1AncgTPiXIEQaye\0', 43, 'congacon@gmail.com', '1234567890', '<p>Toi la hiep hhsdf</p>', '09/08/1992', '135B', 'MOD2'),
+(16, 'hai', '$2y$12$lTn9xsUReWKcC475Q2fzd.VrKWKlkR..lDxRFN1AncgTPiXIEQaye\0', 45, 'con@.com', '01213455789', '<p>wertg</p>', '23456', '123456', 'MEM'),
+(18, 'dong', '$2y$12$lTn9xsUReWKcC475Q2fzd.VrKWKlkR..lDxRFN1AncgTPiXIEQaye\0', 44, 'conga@gmail.com', '01213455789', '<p>T&ocirc;i l&agrave; đ&ocirc;ng</p>', '09/08/1992', '135B', 'MEM');
 
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `car`
+--
+ALTER TABLE `car`
+  ADD PRIMARY KEY (`car_id`),
+  ADD KEY `fk_hang_car_idx` (`car_hang`),
+  ADD KEY `fk_image_car_idx` (`car_image`);
+
+--
+-- Indexes for table `comment`
+--
+ALTER TABLE `comment`
+  ADD PRIMARY KEY (`cm_id`),
+  ADD KEY `cm_car_id` (`cm_car_id`);
+
+--
+-- Indexes for table `dat_hang`
+--
+ALTER TABLE `dat_hang`
+  ADD PRIMARY KEY (`dh_ma`),
+  ADD KEY `fk_user_dh_idx` (`dh_user`),
+  ADD KEY `fk_car_dh_idx` (`dh_car_id`);
+
+--
+-- Indexes for table `hang_xe`
+--
+ALTER TABLE `hang_xe`
+  ADD PRIMARY KEY (`hang_id`);
+
+--
+-- Indexes for table `image`
+--
+ALTER TABLE `image`
+  ADD PRIMARY KEY (`im_ma`),
+  ADD KEY `im_hang` (`im_hang`);
+
+--
+-- Indexes for table `slide_show`
+--
+ALTER TABLE `slide_show`
+  ADD PRIMARY KEY (`sl_id`),
+  ADD KEY `fk_sl_image_idx` (`image_url`);
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `user_image` (`user_image`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `car`
+--
+ALTER TABLE `car`
+  MODIFY `car_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+--
+-- AUTO_INCREMENT for table `comment`
+--
+ALTER TABLE `comment`
+  MODIFY `cm_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+--
+-- AUTO_INCREMENT for table `dat_hang`
+--
+ALTER TABLE `dat_hang`
+  MODIFY `dh_ma` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT for table `image`
+--
+ALTER TABLE `image`
+  MODIFY `im_ma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+--
+-- AUTO_INCREMENT for table `slide_show`
+--
+ALTER TABLE `slide_show`
+  MODIFY `sl_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- Constraints for dumped tables
 --
@@ -302,7 +373,7 @@ ALTER TABLE `comment`
 --
 ALTER TABLE `dat_hang`
   ADD CONSTRAINT `fk_car_dh` FOREIGN KEY (`dh_car_id`) REFERENCES `car` (`car_id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_user_dh` FOREIGN KEY (`dh_user`) REFERENCES `user` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `fk_user_dh` FOREIGN KEY (`dh_user`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `image`
@@ -317,9 +388,9 @@ ALTER TABLE `slide_show`
   ADD CONSTRAINT `fk_sl_image` FOREIGN KEY (`image_url`) REFERENCES `image` (`im_ma`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `user`
+-- Constraints for table `users`
 --
-ALTER TABLE `user`
+ALTER TABLE `users`
   ADD CONSTRAINT `fk_user_image` FOREIGN KEY (`user_image`) REFERENCES `image` (`im_ma`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

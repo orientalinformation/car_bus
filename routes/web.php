@@ -23,19 +23,15 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-// Route::get('/product', function () {
-//     return view('product');
-// });
-
 Route::get('/product', 'ProductController@getIndex');
 
 Route::get('/users/register', function () {
     return view('users.register');
 });
 
-Route::get('/users/login', function () {
-    return view('users.login');
-});
+Route::get('/users/login', 'UserController@login');
+Route::post('/users/login/attempt', 'UserController@loginAttempt');
+Route::get('/users/show/account', 'UserController@account');
 
 Route::get('/cars/searchadvanced', function () {
     return view('cars.searchadvanced');
