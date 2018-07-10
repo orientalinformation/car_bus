@@ -23,9 +23,11 @@ Route::get('/contact', function () {
     return view('contact');
 });
 
-Route::get('/product', function () {
-    return view('product');
-});
+// Route::get('/product', function () {
+//     return view('product');
+// });
+
+Route::get('/product', 'ProductController@getIndex');
 
 Route::get('/users/register', function () {
     return view('users.register');
@@ -35,7 +37,7 @@ Route::get('/users/login', function () {
     return view('users.login');
 });
 
-Route::get('/car/searchadvanced', function () {
-    return view('car.searchadvanced');
+Route::get('/cars/searchadvanced', function () {
+    return view('cars.searchadvanced');
 });
 // Route::get('gioithieu', 'gioithieuController@getIndex');

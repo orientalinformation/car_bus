@@ -36,7 +36,7 @@
         </li>
         <li class="nav_sub"><a href="/product"><span>Hãng Xe</span></a></li>
         <li><a href="/contact"><span>Liên Hệ</span></a></li>
-        <li><a href="/car/searchadvanced"><span>Tìm Kiếm Nâng Cao</span></a></li>
+        <li><a href="/cars/searchadvanced"><span>Tìm Kiếm Nâng Cao</span></a></li>
       </ul>
     </div>
     <div class="clr"></div>
