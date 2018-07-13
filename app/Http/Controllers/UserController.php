@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -26,17 +27,11 @@ class UserController extends Controller
 	public function loginAttempt()
 	{
 		$input = $this->request->all();
-		var_dump($input); die;
+		
 		$username = $input['tentaikhoan'];
 		$password = $input['matkhau'];
 
-		$credentials = $this->request->only($username, $password);
-
-    // if (Auth::attempt($credentials)) {
-        // return redirect()->intended('users/show/account');
-    // }
-
-		if (Auth::attempt($credentials)) {
+		if (Auth::attempt(array('user_name' => $username, 'password' => $password))) {
 			$role = Auth::user()->user_role;
 			if($role == 'ADM') {
 				return Redirect::intended('admin/user/show/account')
@@ -49,6 +44,12 @@ class UserController extends Controller
 			return Redirect::intended('users/login')
 			->with('messages', 'Username và password không tồn tại.');
 		}
+	}
+
+	public function logout()
+	{
+		Auth::logout();
+		return Redirect::intended('/');
 	}
 
 	public function account()

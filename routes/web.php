@@ -32,8 +32,12 @@ Route::get('/users/register', function () {
 Route::get('/users/login', 'UserController@login');
 Route::post('/users/login/attempt', 'UserController@loginAttempt');
 Route::get('/users/show/account', 'UserController@account');
+Route::get('/users/logout','UserController@logout');
 
 Route::get('/cars/searchadvanced', function () {
     return view('cars.searchadvanced');
 });
-// Route::get('gioithieu', 'gioithieuController@getIndex');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 10, 2018 at 08:41 AM
+-- Generation Time: Jul 13, 2018 at 09:28 AM
 -- Server version: 10.1.26-MariaDB-0+deb9u1
 -- PHP Version: 7.0.30-1~dotdeb+8.1
 
@@ -214,6 +214,18 @@ INSERT INTO `image` (`im_ma`, `im_url`, `im_hang`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `migrations`
+--
+
+CREATE TABLE `migrations` (
+  `id` int(10) UNSIGNED NOT NULL,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `slide_show`
 --
 
@@ -250,18 +262,19 @@ CREATE TABLE `users` (
   `user_gioithieu` text CHARACTER SET utf8 COLLATE utf8_unicode_ci,
   `user_ntns` varchar(100) DEFAULT NULL,
   `user_diachi` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `user_role` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL
+  `user_role` varchar(45) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
+  `remember_token` varchar(100) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `user_name`, `password`, `user_image`, `user_email`, `user_sdt`, `user_gioithieu`, `user_ntns`, `user_diachi`, `user_role`) VALUES
-(1, 'admin', '$2y$12$lTn9xsUReWKcC475Q2fzd.VrKWKlkR..lDxRFN1AncgTPiXIEQaye\0', 30, 'hoangminhhiep1992@gmail.com', '6895372334', '<p>dfghj546.56</p>', '12/11/1992', '5467/456/456', 'ADM'),
-(15, 'hiep', '$2y$12$lTn9xsUReWKcC475Q2fzd.VrKWKlkR..lDxRFN1AncgTPiXIEQaye\0', 43, 'congacon@gmail.com', '1234567890', '<p>Toi la hiep hhsdf</p>', '09/08/1992', '135B', 'MOD2'),
-(16, 'hai', '$2y$12$lTn9xsUReWKcC475Q2fzd.VrKWKlkR..lDxRFN1AncgTPiXIEQaye\0', 45, 'con@.com', '01213455789', '<p>wertg</p>', '23456', '123456', 'MEM'),
-(18, 'dong', '$2y$12$lTn9xsUReWKcC475Q2fzd.VrKWKlkR..lDxRFN1AncgTPiXIEQaye\0', 44, 'conga@gmail.com', '01213455789', '<p>T&ocirc;i l&agrave; đ&ocirc;ng</p>', '09/08/1992', '135B', 'MEM');
+INSERT INTO `users` (`id`, `user_name`, `password`, `user_image`, `user_email`, `user_sdt`, `user_gioithieu`, `user_ntns`, `user_diachi`, `user_role`, `remember_token`) VALUES
+(1, 'admin', '$2y$12$lTn9xsUReWKcC475Q2fzd.VrKWKlkR..lDxRFN1AncgTPiXIEQaye', 30, 'hoangminhhiep1992@gmail.com', '6895372334', '<p>dfghj546.56</p>', '12/11/1992', '5467/456/456', 'ADM', 'zKDa2ZXnbNvbezoFoz2oqCXjvM4QynqeAb2TsaEMADv15fbDgrcoJ08CYWMo'),
+(15, 'hiep', '$2y$12$lTn9xsUReWKcC475Q2fzd.VrKWKlkR..lDxRFN1AncgTPiXIEQaye', 43, 'congacon@gmail.com', '1234567890', '<p>Toi la hiep hhsdf</p>', '09/08/1992', '135B', 'MOD2', NULL),
+(16, 'hai', '$2y$12$lTn9xsUReWKcC475Q2fzd.VrKWKlkR..lDxRFN1AncgTPiXIEQaye', 45, 'con@.com', '01213455789', '<p>wertg</p>', '23456', '123456', 'MEM', NULL),
+(18, 'dongtp', '$2y$12$QJx8v/jNHaabzmb5j0B.geKwltG5CxFFPhRPayrxJS7wpGnU8QhCu', 44, 'conga@gmail.com', '01213455789', '<p>T&ocirc;i l&agrave; đ&ocirc;ng</p>', '09/08/1992', '135B', 'MEM', '9SawCKGHl4hefcnR9coL30xcyeFipt36u1GWhIEp3JpdhzfFyGGT9fBjInhO');
 
 --
 -- Indexes for dumped tables
@@ -304,6 +317,12 @@ ALTER TABLE `image`
   ADD KEY `im_hang` (`im_hang`);
 
 --
+-- Indexes for table `migrations`
+--
+ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `slide_show`
 --
 ALTER TABLE `slide_show`
@@ -341,6 +360,11 @@ ALTER TABLE `dat_hang`
 --
 ALTER TABLE `image`
   MODIFY `im_ma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+--
+-- AUTO_INCREMENT for table `migrations`
+--
+ALTER TABLE `migrations`
+  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `slide_show`
 --

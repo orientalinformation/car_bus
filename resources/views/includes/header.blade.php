@@ -11,8 +11,8 @@
       <div style="background:white">
         @if(Auth::check())
           <div >Xin chào: 
-            <a href="/user/show/account">{{ Auth::user()->user_name }}</a><br/>
-            <a href="/user/logout">Đăng Xuất</a>
+            <a href="/users/show/account">{{ Auth::user()->user_name }}</a><br/>
+            <a href="/users/logout">Đăng Xuất</a>
           </div>
         @else 
             Chưa đăng nhập | <a href="/users/login">Đăng nhập</a>
