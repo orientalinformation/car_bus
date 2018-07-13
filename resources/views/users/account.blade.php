@@ -35,7 +35,7 @@
           <h2 class="star">Chức năng Tài khoản</h2>
           <div class="clr"></div>
           <ul class="sb_menu">
-	          <li><a href="/user/show/account"><span>Xem Thông Tin Cá Nhân</span></a></li>
+	          <li><a href="/users/show/account"><span>Xem Thông Tin Cá Nhân</span></a></li>
 	          <li><a href="/user/show/account/edit"><span>Sửa Thông Tin Cá Nhân</span></a> </li>
 	          <li><a href="/user/show/account/matkhauedit"><span>Thay đổi mật khẩu</span></a> </li> 
 	          

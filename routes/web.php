@@ -29,10 +29,13 @@ Route::get('/users/register', function () {
     return view('users.register');
 });
 
+Route::post('/users/register/store','UserController@storeRegister');
 Route::get('/users/login', 'UserController@login');
 Route::post('/users/login/attempt', 'UserController@loginAttempt');
 Route::get('/users/show/account', 'UserController@account');
 Route::get('/users/logout','UserController@logout');
+
+Route::get('admin/user/show/account','UserController@account');
 
 Route::get('/cars/searchadvanced', function () {
     return view('cars.searchadvanced');
