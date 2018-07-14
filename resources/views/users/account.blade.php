@@ -9,9 +9,15 @@
           <div class="clr"></div>
           <p><b style="color:green"><?php echo Session::get('message');?></b></p>
 		      <p><b style="color:red"><?php echo Session::get('messages');?></b></p>
-          <?php $image = DB::table('image')->where('image.im_ma', '=', Auth::user()->user_image)->get(); ?>
-          @if($image != null)
-            <div class="img"><img src="{{$image[0]->im_url}}" width="198" height="188" alt="" class="fl" /></div>
+          <?php 
+            $image = null;
+
+            if (Auth::user()) {
+              $image = DB::table('image')->where('image.im_ma', '=', Auth::user()->user_image)->first(); 
+            }
+          ?>
+          @if($image != null) <!--Error here-->
+            <div class="img"><img src="{{$image->im_url}}" width="198" height="188" alt="" class="fl" /></div>
           @else
             <div class="img"><img src="/images/userpic.gif" width="198" height="188" alt="" class="fl" /></div>
           @endif
