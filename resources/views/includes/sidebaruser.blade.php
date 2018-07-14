@@ -5,7 +5,7 @@
     <ul class="sb_menu">
       <li><a href="/users/show/account"><span>Xem Thông Tin Cá Nhân</span></a></li>
       <li><a href="/users/show/account/edit"><span>Sửa Thông Tin Cá Nhân</span></a> </li>
-      <li><a href="/users/show/account/matkhauedit"><span>Thay đổi mật khẩu</span></a> </li> 
+      <li><a href="/users/show/account/passworddit"><span>Thay đổi mật khẩu</span></a> </li> 
       
       @if(Auth::user()->user_role == 'ADM')
         <li><a href="/admin/show/add"><span>Thêm Sản Phẩm</span></a></li>

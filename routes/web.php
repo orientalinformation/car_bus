@@ -36,6 +36,8 @@ Route::get('/users/logout','UserController@logout');
 Route::get('/users/show/account', 'UserController@account');
 Route::get('/users/show/account/edit','UserController@accountedit');
 Route::post('show/edit/account','UserController@accountupdate');
+Route::get('/users/show/account/passworddit','UserController@passwordedit');
+Route::post('/users/show/account/change','UserController@changePassword');
 
 Route::get('admin/user/show/account','UserController@account');
 

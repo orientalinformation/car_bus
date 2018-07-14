@@ -164,4 +164,45 @@ class UserController extends Controller
 			}
 		}
 	}
+
+	public function passwordedit()
+	{
+		return View::make('users.passwordedit');
+	}
+
+	public function changePassword()
+	{
+		$mkcu = Input::get('mkcu');
+		$mkmoi = Input::get('mkmoi');
+		$nlmk= Input::get('nlmk');
+
+		$rules = array(
+				'mkcu'=>'required',
+				'mkmoi'=>'required',
+				'nlmk'=>'required|same:mkmoi',
+		);
+
+		$messages = array(
+				'mkcu.required'    => '<b style="color:red">Mật khẩu không được để trống</b>',
+				'mkmoi.required'    => '<b style="color:red">Mật khẩu không được để trống</b>',			
+				'nlmk.required'    => '<b style="color:red">Mật khẩu không được để trống</b>',
+				'nlmk.same'    => '<b style="color:red">Mật khẩu nhập lại không đúng</b>',	
+		);
+		
+		$validator = Validator::make(Input::all(), $rules,$messages);
+		if ($validator->fails()) {
+				$messages = $validator->messages();
+				return Redirect::to('users/show/account/passworddit')->withErrors($messages);
+		} else {
+			$hashedPassword = DB::table('users')->where('users.id','=', Auth::user()->id)->get();
+			if (Hash::check($mkcu, $hashedPassword[0]->password)) {
+				$mkmoi = Hash::make(Input::get('mkmoi'));
+				DB::table('users')->where('users.id','=', Auth::user()->id)->update(
+				array('users.password' => $mkmoi));
+				return Redirect::to('/users/show/account')->with('message','<b style="color:green">Bạn đã thay đổi thành công</b>');
+			} else {
+				return Redirect::to('/users/show/account/passworddit')->with('message',"<b style='color:red'>Mật khẩu cũ không đúng</b>");
+			}
+		}
+	}
 }
