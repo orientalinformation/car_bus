@@ -32,8 +32,10 @@ Route::get('/users/register', function () {
 Route::post('/users/register/store','UserController@storeRegister');
 Route::get('/users/login', 'UserController@login');
 Route::post('/users/login/attempt', 'UserController@loginAttempt');
-Route::get('/users/show/account', 'UserController@account');
 Route::get('/users/logout','UserController@logout');
+Route::get('/users/show/account', 'UserController@account');
+Route::get('/users/show/account/edit','UserController@accountedit');
+Route::post('show/edit/account','UserController@accountupdate');
 
 Route::get('admin/user/show/account','UserController@account');
 
