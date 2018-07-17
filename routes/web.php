@@ -63,10 +63,8 @@ Route::get('admin/show/user/edit', 'UserController@useredit');
 
 Route::resource('admin', 'UserController');
 
-Route::get('/cars/searchadvanced', function () {
-    return view('cars.searchadvanced');
-});
-
+Route::get('/cars/searchadvanced', 'SearchAdvancedController@getIndex');
+Route::get('resultsearchadvanced', 'ResultNameController@result');
 
 Route::get('/admin/show/add','UserController@add');
 

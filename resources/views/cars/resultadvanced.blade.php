@@ -1,0 +1,31 @@
+@extends('layouts.master')
+@section('content')
+  <div class="content">
+    <div class="content_resize">
+      <div class="mainbar">
+        <div class="article">
+          <h2>Kết quả tìm kiếm</h2>
+          <div class="clr"></div>
+          @foreach ($dsxe as $xe)
+            <div class="sp">
+              <p><img src="{{ $xe->im_url}}" width="198" height="188" alt="" class="fl" /></p>
+              <p>Tên xe: <a href="/car/{{ $xe->car_id }}">"{{ $xe->car_name }}"<a></p>
+              <p>Hãng: {{$xe->hang_name}}</p>
+              <p>Loại: {{$xe->car_loai}}</p>
+              <p>Màu sắc: {{$xe->car_color}}</p>
+              <p>Giá: {{$xe->car_gia}}</p>
+            </div>
+          @endforeach
+       <div style="clear: both"></div>
+       <?php 
+       use Illuminate\Support\Facades\Input;
+       echo $dsxe->appends(array('tenxe' => Input::get('tenxe')))->appends(array('hangxe' => Input::get('hangxe')))->appends(array('loai' => Input::get('loai')))->appends(array('giacamin' => Input::get('giacamin')))->appends(array('giacamax' => Input::get('giacamax')))->links(); ?>
+          <div class="clr"></div>
+        </div>
+      </div>
+      @include('includes/sidebarright')
+      <div class="clr"></div>
+    </div>
+  </div>
+  
+@stop
