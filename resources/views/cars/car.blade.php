@@ -30,7 +30,7 @@
           </div>
           <h2>Comment</h2>
           <div class="commentsp">
-            <form action="/themcomment" method="get" ">
+            <form action="/addcomment" method="get" ">
               <ol>
                 <li>
                   @if(Auth::check())

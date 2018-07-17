@@ -31,6 +31,8 @@ Route::get('/users/register', function () {
 
 // resource controller car is car.blade.php
 Route::resource('car', 'CarController');
+Route::resource('manufacturer', 'ManufacturerController');
+Route::get('/addcomment','CommentController@getIndex');
 
 Route::post('/users/register/store','UserController@storeRegister');
 Route::get('/users/login', 'UserController@login');
