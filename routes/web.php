@@ -44,6 +44,14 @@ Route::post('show/edit/account', 'UserController@accountupdate');
 Route::get('/users/show/account/passworddit', 'UserController@passwordedit');
 Route::post('/users/show/account/change', 'UserController@changePassword');
 
+Route::get('user/profile','UserController@useradd');
+Route::post('show/edit/account1','UserController@accountupdateuser');
+Route::get('user/profiledelete','UserController@userdelete');
+Route::get('/user/profileauth','UserController@auth');
+Route::get('admin/show/edit/auth','UserController@authedit');
+
+Route::resource('user', 'UserController'); 
+Route::get('admin/show','UserController@show');
 Route::get('admin/user/show/account', 'UserController@account');
 Route::post('admin/show/add/check', 'UserController@checkAdd');
 Route::get('admin/show/delete', 'UserController@delete');
@@ -51,6 +59,9 @@ Route::get('admin/show/delete/check', 'UserController@checkDelete');
 Route::get('admin/show/edit','UserController@edit');
 Route::get('admin/show/edit/check','UserController@checkedit');
 Route::post('admin/show/edit/check1', 'UserController@checkedit1');
+Route::get('admin/show/user/edit', 'UserController@useredit');
+
+Route::resource('admin', 'UserController');
 
 Route::get('/cars/searchadvanced', function () {
     return view('cars.searchadvanced');

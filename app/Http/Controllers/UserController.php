@@ -125,13 +125,22 @@ class UserController extends Controller
 
   public function show()
   {
-    
     return View::make('users.show');
   }
 
   public function add()
   {
     return View::make('users.add');
+  }
+
+  public function update($id)
+  {
+
+  }
+
+  public function destroy($id)
+  {
+    
   }
 
   public function account()
@@ -366,5 +375,94 @@ class UserController extends Controller
         }
       }
     }         
+  }
+
+  public function useredit()
+  {
+    $results = DB::table('users')->where('users.user_role','!=','ADM')->get();
+    return View::make('users.useredit',array('dsuser' => $results));
+  }
+
+  public function useradd()
+  {
+    $results = DB::table('users')->where('users.id', '=', Input::get('id'))->get();
+    return View::make('users.useraccountedit', array('dsuser' => $results));
+  }
+
+  public function accountupdateuser()
+  {
+    $rules = array(
+        
+        'email' => 'required:users,user_email',
+        'sdt' => 'required|digitsbetween:10,11',
+    );
+
+    $messages = array(
+        
+        'email.required'    => '<b style="color:red">Email không được để trống</b>',
+        'email.email'    => '<b style="color:red">Email không hợp lệ</b>',
+        'sdt.required'    => '<b style="color:red">Số điện thoại không được để trống</b>',
+        'sdt.digitsbetween'    => '<b style="color:red">Số điện thoại không hợp lệ</b>',
+    );
+
+    $validator = Validator::make(Input::all(), $rules,$messages);
+    if ($validator->fails()) {
+      $messages = $validator->messages();
+      return Redirect::to('/users/show/account/edit')->withErrors($messages);
+    } else {
+      $id = Input::get('id');
+      $anh = Input::file('anh');
+      $sdt = Input::get('sdt');
+      $email = Input::get('email');
+      $diachi = Input::get('diachi');
+      $content = Input::get('content');
+      $destinationPath = 'images';
+    
+      if ($anh !="" ) {
+          $filename = $anh->getClientOriginalName();
+          $uploadSuccess = Input::file('anh')->move($destinationPath, $filename);
+          if($uploadSuccess) {
+            DB::table('image')->insert(array('image.im_url' => '/images/'.$filename));
+            $image = DB::table('image')->max('im_ma');
+            DB::table('users')->where('users.id', '=', $id)->update(
+            array( 
+              'users.user_image' => $image,
+              'users.user_sdt' => $sdt ,
+              'users.user_email' => $email,
+              'users.user_diachi' => $diachi,
+              'users.user_gioithieu' => $content));
+            return Redirect::to('/users/show/account')->with('message', 'Sữa tài khoản thành công');
+          }
+      } else {
+        DB::table('users')->where('users.id', '=', $id)->update(
+        array(
+          'users.user_sdt' => $sdt,
+          'users.user_email' => $email,
+          'users.user_diachi' => $diachi,
+          'users.user_gioithieu' => $content));
+        return Redirect::to('/users/show/account')->with('message', 'Sữa tài khoản thành công');
+      }
+    }
+  }
+
+  public function userdelete()
+  {  
+    $id = Input::get('id');
+    DB::table('users')->where('users.id', '=', $id)->delete();
+    return Redirect::to('/admin/show/user/edit');
+  }
+
+  public function auth()
+  {
+    $results = DB::table('users')->where('users.id', '=', Input::get('id'))->get();
+    return View::make('users.auth', array('dsuser' => $results));
+  }
+
+  public function authedit()
+  {
+    $id = Input::get('id');
+    $role = Input::get('quyen');
+    DB::table('users')->where('users.id', '=', $id)->update(array('users.user_role' => $role));
+    return Redirect::to('/users/show/account'); 
   }
 }
