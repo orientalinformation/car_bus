@@ -200,6 +200,76 @@ class UserController extends Controller
     }
   }
 
+  public function edit()
+  {
+    $results = DB::table('car')->join('image','image.im_ma','=','car.car_image')->get();
+    return View::make('users.edit',array('dsxe' => $results));
+  }
+
+  public function checkedit()
+  {
+    $id = Input::get('id');
+    $results = DB::table('car')->join('image','image.im_ma','=','car.car_image')->where('car.car_id','=', $id)->get();
+    return View::make('users.editprod', array('dsxe' => $results));
+  }
+
+  public function checkedit1()
+  {
+    $id = Input::get('id');
+    $tenxe = Input::get('tenxe');
+    $anh = Input::file('anh');
+    $mauxe = Input::get('mauxe');
+    $loaixe = Input::get('loaixe');
+    $mahang = Input::get('mahang');
+    $giaxe = Input::get('giaxe');
+    $noidung = Input::get('noidung');
+
+    $destinationPath ='images';
+  
+    if ( $anh!=""  ) {
+        $filename = $anh->getClientOriginalName();
+        $uploadSuccess = Input::file('anh')->move($destinationPath, $filename);
+      if ($uploadSuccess) {
+          DB::table('image')->insert(array('image.im_url' => '/images/'.$filename));
+          $image = DB::table('image')->max('im_ma');
+        
+          DB::table('car')->where('car.car_id','=',$id)->update(
+          array(
+            'car.car_name' => $tenxe,
+            'car.car_image' => $image,
+            'car.car_color' => $mauxe,
+            'car.car_loai' => $loaixe,
+            'car.car_hang' => $mahang,
+            'car.car_gia' => $giaxe,
+            'car.car_content'=>$noidung));
+          return Redirect::to('/users/show/account')->with('message','<b style="color:green">Sửa sản phẩm thành công.</b>');
+      }
+    } else {
+      DB::table('car')->where('car.car_id','=',$id)->update(
+      array(
+        'car.car_name' => $tenxe,
+        'car.car_color' => $mauxe,
+        'car.car_loai' => $loaixe,
+        'car.car_hang' => $mahang,
+        'car.car_gia' => $giaxe,
+        'car.car_content' => $noidung));
+      return Redirect::to('/users/show/account')->with('message','<b style="color:green">Sửa sản phẩm thành công.</b>');
+    }
+  }
+
+  public function delete()
+  {
+    $results = DB::table('car')->join('image','image.im_ma','=','car.car_image')->get();
+    return View::make('users.delete', array('dsxe' => $results));
+  }
+
+  public function checkDelete()
+  {
+    $ID = Input::get('id');
+    DB::table('car')->where('car.car_id','=', $ID)->delete();
+    return Redirect::to('/admin/show/delete')->with('message','<b style="color:green">Xóa sản phẩm thành công.</b>');
+  }
+
   public function passwordedit()
   {
     return View::make('users.passwordedit');
