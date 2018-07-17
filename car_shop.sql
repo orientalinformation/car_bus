@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 13, 2018 at 09:28 AM
+-- Generation Time: Jul 17, 2018 at 07:50 AM
 -- Server version: 10.1.26-MariaDB-0+deb9u1
 -- PHP Version: 7.0.30-1~dotdeb+8.1
 
@@ -35,7 +35,7 @@ CREATE TABLE `car` (
   `car_gia` int(100) DEFAULT NULL,
   `car_color` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
   `car_loai` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci DEFAULT NULL,
-  `view` int(11) NOT NULL
+  `view` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -51,12 +51,12 @@ INSERT INTO `car` (`car_id`, `car_name`, `car_image`, `car_content`, `car_hang`,
 (6, 'Toyota innova', 6, 'Là dòng xe thống trị phân khúc đa dụng nhiều năm liền, Toyota Innova , là \"quả bom tấn\" của Toyota.', 'TYT', 814000000, 'Màu xanh dương', 'Thể thao', 0),
 (7, 'Toyota fortuner', 7, 'Mẫu xe SUV địa hình việt dã luôn chiếm thị phần thống trị (trên 50%) của Toyota được ra mắt lần đầu năm 2007.', 'TYT', 1056000000, 'Màu vàng', ' Du lịch', 0),
 (8, 'Toyota Landcruiser prado', 8, 'Mẫu xe nhập khẩu nguyên chiếc từ Nhật Bản với 07 chiếc.', 'TYT', 2071000000, 'Màu hồng', 'Du lịch', 0),
-(9, 'Hyundai Starex', 9, 'Mẫu xe nhập khẩu nguyên chiếc từ Nhật Bản với 07 chỗ, động cơ 2.7 VVT-i, máy xăng, 2 cầu 4 bánh chủ động toàn thời gian.', 'HYD', 529000000, 'Màu kem', 'Du lịch', 0),
-(10, 'Hyundai Santafe', 10, 'Huyndai i20 trang bị Hệ thống âm thanh 4 loa. chơi nhạc CD/MP3/Radio. Cửa sổ trời, đèn sương mù, tay lái trợ lực, gương kính chỉnh điện, vô lăng tích hợp', 'HYD', 2071000000, 'Màu trắng', 'Du lịch', 2),
+(9, 'Hyundai Starex', 9, 'Mẫu xe nhập khẩu nguyên chiếc từ Nhật Bản với 07 chỗ, động cơ 2.7 VVT-i, máy xăng, 2 cầu 4 bánh chủ động toàn thời gian.', 'HYD', 529000000, 'Màu kem', 'Du lịch', 10),
+(10, 'Hyundai Santafe', 10, 'Huyndai i20 trang bị Hệ thống âm thanh 4 loa. chơi nhạc CD/MP3/Radio. Cửa sổ trời, đèn sương mù, tay lái trợ lực, gương kính chỉnh điện, vô lăng tích hợp', 'HYD', 2071000000, 'Màu trắng', 'Du lịch', 6),
 (11, 'Hyundai Avante', 11, 'Hyundai Avante là sự kết hợp hoàn hảo giữa vẻ thời trang và mạnh mẽ. Sở hữu động cơ 1.6, Hyundai Avante vận hành êm ái, tiện nghi và tiết kiệm nhiên liệu.', 'HYD', 1056000000, 'Màu trắng', 'Xe tải', 0),
 (12, 'Hyundai Elantra GLS', 12, 'Hyundai Elantra ra mắt vào khoảng năm 2011 để trở thành một trong những chiếc xe bán chạy nhất và compact tốt nhất tại thị trường Mỹ.', 'HYD', 814000000, 'Màu xanh', 'Xe tải', 0),
 (13, 'Hyundai Elantra', 13, 'Với hình dáng mới mẫu xe Hyundai Elantra 2014 càng trở lên sắc sảo, góc cạnh và thể thao hơn. Hyundai Elantra 2014 là sự lựa chọn hàng đầu trong năm', 'HYD', 612000000, 'Màu đen', 'Thể thao', 2),
-(14, 'Hyundai HD 72', 14, 'Với phân khúc xe tải nhẹ cùng với chất lượng Đạt tiêu chuẩn EURO III, Kiểu dáng xe tải hyundai hd72 và chủng loại phong phú giá cả hợp lý', 'HYD', 1292000000, 'Màu vàng', 'Xe tải', 0),
+(14, 'Hyundai HD 72', 14, 'Với phân khúc xe tải nhẹ cùng với chất lượng Đạt tiêu chuẩn EURO III, Kiểu dáng xe tải hyundai hd72 và chủng loại phong phú giá cả hợp lý', 'HYD', 1292000000, 'Màu vàng', 'Xe tải', 1),
 (15, 'Huyndai i20', 15, 'Hyundai Eon 2013, mới 100%. Xe nhập khẩu nguyên chiếc. Dung tích xi lanh 0.8 lít.', 'HYD', 814000000, 'Màu đen', 'Du lịch', 0),
 (16, 'Hyundai i30 ', 16, 'Hyundai Starex 2013. .Túi khí cho lái xe, Hệ thống chống bó cứng phanh ABS', 'HYD', 1056000000, 'Màu đỏ', 'Du lịch', 0),
 (17, 'Lamborghini Jalpa', 17, 'Siêu xe mới của Lambo được trang bị V12 6,5L?công suất 650 mã lực, mô men xoắn cực đại 660Nm vòng tua máy 6.000 vòng/phút. Theo hãng sản xuất xe hơi Italy, chiếc xe này có khả năng tăng tốc t...', 'LBN', 1292000000, 'Màu đen', 'Xe đua', 5),
@@ -67,8 +67,9 @@ INSERT INTO `car` (`car_id`, `car_name`, `car_image`, `car_content`, `car_hang`,
 (22, 'Lamborghini baio', 22, '1981-1988, động cơ 3,5 lít V8, tốc độ tối đa 234 km/h.', 'LBN', 2071000000, 'Màu vàng', 'Du lịch', 0),
 (23, 'Lamborghini Reventon Roadster', 23, '1986-1993, động cơ 5,17 lít V12, tốc độ tối đa 210 km/h.', 'LBN', 814000000, 'Xanh dương', 'Du lịch', 1),
 (24, 'Lamborghini Gallardo', 24, '2012, động cơ 5.2 V10, số lượng giới hạn 20 chiếc, tốc độ tối đa 352 km/h.', 'LBN', 814000000, 'Màu kem', 'Du lịch', 0),
-(25, 'Huyndai Sonata', 29, 'Hyundai Sonata đã từng chinh phục mọi ánh mắt ngay từ cái nhìn đầu tiên. Năm 2011 là một năm thực sự đáng nhớ và đầy ngạc nhiên cho những người yêu', 'HYD', 105000000, 'Trắng', 'Du lịch', 4),
-(26, 'Toyota Camry 2013', 28, 'Toyota Camry 2013 được trang bị full Options với động cơ 2.5L Dual VVT-I màn hình DVD', 'TYT', 1292000000, 'Đen', 'Du lịch', 8);
+(25, 'Huyndai Sonata', 29, 'Hyundai Sonata đã từng chinh phục mọi ánh mắt ngay từ cái nhìn đầu tiên. Năm 2011 là một năm thực sự đáng nhớ và đầy ngạc nhiên cho những người yêu', 'HYD', 105000000, 'Trắng', 'Du lịch', 5),
+(26, 'Toyota Camry 2013', 28, 'Toyota Camry 2013 được trang bị full Options với động cơ 2.5L Dual VVT-I màn hình DVD', 'TYT', 1292000000, 'Đen', 'Du lịch', 8),
+(27, 'KKK', 50, '<p>TTTT</p>', 'HYD', 300000, 'LLL', 'LAMBO', NULL);
 
 -- --------------------------------------------------------
 
@@ -111,7 +112,10 @@ INSERT INTO `comment` (`cm_id`, `cm_content`, `cm_date`, `cm_name`, `cm_car_id`)
 (61, '<p>xe cui qua</p>', '7/1/2014', 'admin', 26),
 (62, '<p>cung dc</p>', '7/1/2014', 'admin', 26),
 (63, '<p>xe ngon</p>', '7/1/2014', 'hoang', 13),
-(64, '<p>xe cui qua</p>', '7/1/2014', 'hiep', 1);
+(64, '<p>xe cui qua</p>', '7/1/2014', 'hiep', 1),
+(65, '<p>Hello larvel</p>', '17/7/2018', 'dongtp', 10),
+(66, '<p>Hello larvel</p>', '17/7/2018', 'dongtp', 10),
+(67, '<p>Hello larvel</p>', '17/7/2018', 'dongtp', 10);
 
 -- --------------------------------------------------------
 
@@ -209,7 +213,12 @@ INSERT INTO `image` (`im_ma`, `im_url`, `im_hang`) VALUES
 (42, NULL, NULL),
 (43, NULL, NULL),
 (44, '/images/hiep.jpg', NULL),
-(45, '/images/hai.jpg', NULL);
+(45, '/images/hai.jpg', NULL),
+(46, '/images/mai2.jpg', NULL),
+(47, '/images/1531301245414.JPEG', NULL),
+(48, '/images/1531301245414.JPEG', NULL),
+(49, '/images/1531301245414.JPEG', NULL),
+(50, '/images/1531301245414.JPEG', NULL);
 
 -- --------------------------------------------------------
 
@@ -271,10 +280,11 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `user_name`, `password`, `user_image`, `user_email`, `user_sdt`, `user_gioithieu`, `user_ntns`, `user_diachi`, `user_role`, `remember_token`) VALUES
-(1, 'admin', '$2y$12$lTn9xsUReWKcC475Q2fzd.VrKWKlkR..lDxRFN1AncgTPiXIEQaye', 30, 'hoangminhhiep1992@gmail.com', '6895372334', '<p>dfghj546.56</p>', '12/11/1992', '5467/456/456', 'ADM', 'zKDa2ZXnbNvbezoFoz2oqCXjvM4QynqeAb2TsaEMADv15fbDgrcoJ08CYWMo'),
+(1, 'admin', '$2y$12$lTn9xsUReWKcC475Q2fzd.VrKWKlkR..lDxRFN1AncgTPiXIEQaye', 30, 'hoangminhhiep1992@gmail.com', '6895372334', '<p>dfghj546.56</p>', '12/11/1992', '5467/456/456', 'ADM', 'QWT6e6rS6uTG52St3mu5jbI0xYytGTkePAD9pgIyexhR0JY0WYB0PxvOEvMV'),
 (15, 'hiep', '$2y$12$lTn9xsUReWKcC475Q2fzd.VrKWKlkR..lDxRFN1AncgTPiXIEQaye', 43, 'congacon@gmail.com', '1234567890', '<p>Toi la hiep hhsdf</p>', '09/08/1992', '135B', 'MOD2', NULL),
 (16, 'hai', '$2y$12$lTn9xsUReWKcC475Q2fzd.VrKWKlkR..lDxRFN1AncgTPiXIEQaye', 45, 'con@.com', '01213455789', '<p>wertg</p>', '23456', '123456', 'MEM', NULL),
-(18, 'dongtp', '$2y$12$QJx8v/jNHaabzmb5j0B.geKwltG5CxFFPhRPayrxJS7wpGnU8QhCu', 44, 'conga@gmail.com', '01213455789', '<p>T&ocirc;i l&agrave; đ&ocirc;ng</p>', '09/08/1992', '135B', 'MEM', '9SawCKGHl4hefcnR9coL30xcyeFipt36u1GWhIEp3JpdhzfFyGGT9fBjInhO');
+(18, 'dongtp', '$2y$12$QJx8v/jNHaabzmb5j0B.geKwltG5CxFFPhRPayrxJS7wpGnU8QhCu', 44, 'conga@gmail.com', '01213455789', '<p>T&ocirc;i l&agrave; đ&ocirc;ng</p>', '09/08/1992', '135B', 'MEM', '2ubgZsPTxObvMCn7SquUY1tRXJCxvav0UEytyklRBcKpKbSYXYmvXqT7zwsy'),
+(19, 'haipt', '$2y$10$6feNUb3zbVNiE5qfv/i9he874/1OmXTYK/CV6160a/p3Xi7RBIozC', 46, 'haipt@dfm-engineering.com', '01232302302', NULL, NULL, 'hcm', 'MEM', 'UtE78VGVovbcsSsyUYx0Hza0Io5aqkkwRlK0y41Efb7kZDZVnPSNkQurfubG');
 
 --
 -- Indexes for dumped tables
@@ -344,12 +354,12 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `car`
 --
 ALTER TABLE `car`
-  MODIFY `car_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `car_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 --
 -- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
-  MODIFY `cm_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `cm_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=68;
 --
 -- AUTO_INCREMENT for table `dat_hang`
 --
@@ -359,7 +369,7 @@ ALTER TABLE `dat_hang`
 -- AUTO_INCREMENT for table `image`
 --
 ALTER TABLE `image`
-  MODIFY `im_ma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
+  MODIFY `im_ma` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=51;
 --
 -- AUTO_INCREMENT for table `migrations`
 --
@@ -374,7 +384,7 @@ ALTER TABLE `slide_show`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 --
 -- Constraints for dumped tables
 --
