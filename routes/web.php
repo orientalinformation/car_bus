@@ -44,6 +44,11 @@ Route::post('show/edit/account', 'UserController@accountupdate');
 Route::get('/users/show/account/passworddit', 'UserController@passwordedit');
 Route::post('/users/show/account/change', 'UserController@changePassword');
 
+Route::group(array('before' => 'auth'), function () {
+  Route::get('users/show', 'UserController@show');
+  Route::get('users/show/add', 'UserController@add');
+});
+
 Route::get('user/profile','UserController@useradd');
 Route::post('show/edit/account1','UserController@accountupdateuser');
 Route::get('user/profiledelete','UserController@userdelete');
@@ -65,6 +70,8 @@ Route::resource('admin', 'UserController');
 
 Route::get('/cars/searchadvanced', 'SearchAdvancedController@getIndex');
 Route::get('resultsearchadvanced', 'ResultNameController@result');
+Route::get('searchname', 'ResultNameController@getIndex');
+Route::get('resultname', 'ResultNameController@getIndex');
 
 Route::get('/admin/show/add','UserController@add');
 

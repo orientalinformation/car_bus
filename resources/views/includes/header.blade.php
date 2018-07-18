@@ -1,7 +1,7 @@
 <div class="header">
   <div class="header_resize">
     <div class="searchform"> <!--Thanh Tìm Kiếm-->
-      <form id="formsearch" name="formsearch" method="get" action="/ketquaten"> 
+      <form id="formsearch" name="formsearch" method="get" action="/resultname"> 
         <span>
         <input name="tenxe" class="editbox_search" id="editbox_search" maxlength="80" value="Nhập vào tên hoặc hãng xe." type="text">
         </span>
